@@ -66,6 +66,36 @@
             </c:if>
         </div>
     </div>
+
+    <div id="pagination">
+
+        <c:url value="/" var="prev">
+            <c:param name="page" value="${page-1}"/>
+        </c:url>
+        <c:if test="${page > 1}">
+            <a href="<c:out value="${prev}" />" class="pn prev">Prev</a>
+        </c:if>
+
+        <c:forEach begin="1" end="${maxPages}" step="1" varStatus="i">
+            <c:choose>
+                <c:when test="${page == i.index}">
+                    <span>${i.index}</span>
+                </c:when>
+                <c:otherwise>
+                    <c:url value="/" var="url">
+                        <c:param name="page" value="${i.index}"/>
+                    </c:url>
+                    <a href='<c:out value="${url}" />'>${i.index}</a>
+                </c:otherwise>
+            </c:choose>
+        </c:forEach>
+        <c:url value="/" var="next">
+            <c:param name="page" value="${page + 1}"/>
+        </c:url>
+        <c:if test="${page + 1 <= maxPages}">
+            <a href='<c:out value="${next}" />' class="pn next">Next</a>
+        </c:if>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 

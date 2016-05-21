@@ -1,5 +1,6 @@
 package ru.andreichernov.controller;
 
+import org.springframework.beans.support.PagedListHolder;
 import ru.andreichernov.entity.User;
 import ru.andreichernov.service.UserService;
 
@@ -58,7 +59,7 @@ public class UserController {
         return new ModelAndView("redirect:getAllUsers");
     }
 
-    @RequestMapping(value = {"getAllUsers", "/"})
+    @RequestMapping(value = {"getAllUsers"})
     public ModelAndView getAllUsers(){
         logger.info("Getting all Users.");
         List<User> userList = userService.getAllUsers();
@@ -70,5 +71,29 @@ public class UserController {
         logger.info("Searching the User. User Names: "+searchName);
         List<User> usersList = userService.getAllUsers(searchName);
         return new ModelAndView("userList", "userList", usersList);
+    }
+
+    @RequestMapping(value="/")
+    public ModelAndView listOfUsers(@RequestParam(required = false) Integer page) {
+        ModelAndView modelAndView = new ModelAndView("userList");
+
+        List<User> users = userService.getAllUsers();
+        PagedListHolder<User> pagedListHolder = new PagedListHolder<>(users);
+        pagedListHolder.setPageSize(20);
+        modelAndView.addObject("maxPages", pagedListHolder.getPageCount());
+
+        if(page == null || page < 1 || page > pagedListHolder.getPageCount()){
+            page=1;
+        }
+        modelAndView.addObject("page", page);
+        if(page == null || page < 1 || page > pagedListHolder.getPageCount()){
+            pagedListHolder.setPage(0);
+            modelAndView.addObject("userList", pagedListHolder.getPageList());
+        }
+        else if(page <= pagedListHolder.getPageCount()) {
+            pagedListHolder.setPage(page-1);
+            modelAndView.addObject("userList", pagedListHolder.getPageList());
+        }
+        return modelAndView;
     }
 }
