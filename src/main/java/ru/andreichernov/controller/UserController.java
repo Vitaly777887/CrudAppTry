@@ -48,7 +48,7 @@ public class UserController {
         } else {
             userService.updateUser(user);
         }
-        return new ModelAndView("redirect:getAllUsers");
+        return new ModelAndView("redirect:/");
     }
 
     @RequestMapping("deleteUser")
@@ -56,7 +56,7 @@ public class UserController {
     {
         logger.info("Deleting the User. Id : " + id);
         userService.deleteUser(id);
-        return new ModelAndView("redirect:getAllUsers");
+        return new ModelAndView("redirect:/");
     }
 
     @RequestMapping(value = {"getAllUsers"})
@@ -75,6 +75,7 @@ public class UserController {
 
     @RequestMapping(value="/")
     public ModelAndView listOfUsers(@RequestParam(required = false) Integer page) {
+        logger.info("Getting all Users.");
         ModelAndView modelAndView = new ModelAndView("userList");
 
         List<User> users = userService.getAllUsers();

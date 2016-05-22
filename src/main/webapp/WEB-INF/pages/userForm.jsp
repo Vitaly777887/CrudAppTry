@@ -25,13 +25,32 @@
         .myrow-container{
             margin: 20px;
         }
+        .panel-title{
+            color: #d1cbbc;
+        }
+
+        .btn {
+            padding: 2px 2px;
+            width: 5em;
+            height: 2em;
+            background-color: #333;
+            color: #f1f1f1;
+            border-radius: 0;
+            transition: .2s;
+        }
+
+        .btn:hover, .btn:focus {
+            border: 1px solid #333;
+            background-color: #fff;
+            color: #000;
+        }
     </style>
 </head>
-<body class=".container-fluid">
+<body class=".container-fluid" style="background-color:whitesmoke">
 <div class="container myrow-container">
     <div class="panel panel-success">
-        <div class="panel-heading">
-            <h3 class="panel-title">
+        <div class="panel-heading" style="background-color:#786455">
+            <h3 class="panel-title" style="color: #d1cbbc">
                 User Details
             </h3>
         </div>

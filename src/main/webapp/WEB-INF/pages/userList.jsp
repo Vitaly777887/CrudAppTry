@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>User List</title>
+    <title>Javarush test task</title>
     <!-- Bootstrap CSS -->
     <%-- <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet"> --%>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -13,15 +13,55 @@
         .myrow-container {
             margin: 20px;
         }
+
+        .btn {
+            padding: 2px 2px;
+            width: 5em;
+            height: 2em;
+            background-color: #333;
+            color: #f1f1f1;
+            border-radius: 0;
+            transition: .2s;
+        }
+
+        .btn:hover, .btn:focus {
+            border: 1px solid #333;
+            background-color: #fff;
+            color: #000;
+        }
+
+        a.aEdit:link, a.aDelete:link {
+            color: #a83016;
+        }
+
+        a.aEdit:visited, a.aDelete:visited {
+            color: #947872;
+        }
+
+        a.aEdit:hover, a.aDelete:hover {
+            color: #60a870;
+        }
+
+        a.aEdit:active, a.aDelete:active {
+            color: #ded728;
+        }
+        a.aCreateUser:link{
+            color: #d1cbbc;
+        }
+        a.aCreateUser:visited{
+            color: #c4bba5;
+        }
+        a.aCreateUser:hover{
+             color: #a0cc95;
+         }
     </style>
 </head>
-<body class=".container-fluid">
+<body class=".container-fluid" style="background-color:whitesmoke">
 <div class="container myrow-container">
-    <div class="panel panel-success">
-        <div class="panel-heading">
-            <h3 class="panel-title">
-                <div align="left"><b>User List</b> </div>
-                <div align="right"><a href="createUser">Add New User</a></div>
+    <div class="panel">
+        <div class="panel-heading" style="background-color:#786455">
+            <h3 class="panel-title ">
+                <div align="left"><a class="aCreateUser" href="createUser">Create new user</a></div>
             </h3>
         </div>
         <div class="panel-body">
@@ -29,16 +69,17 @@
                 There are no Users
             </c:if>
             <c:if test="${not empty userList}">
-
                 <form action="searchUser">
                     <div class="row">
-                        <div class="col-md-6"><div class="col-md-6">Search Users:</div><div class="col-md-6"> <input type="text" name="searchName" id="searchName"> </div></div>
-                        <div class="col-md-4"><input class="btn btn-success" type='submit' value='Search'/></div>
+                        <div class="col-md-2">Search users by name:</div>
+                        <div class="col-md-2"><input type="text" name="searchName" id="searchName"
+                                                     placeholder="type name here.."></div>
+                        <div class="col-md-2"><input class="btn btn-xs" type='submit' value='Search'/></div>
                     </div>
                 </form>
 
                 <table class="table table-hover table-bordered">
-                    <thead style="background-color: #bce8f1;">
+                    <thead style="background-color: #b39b89;">
                     <tr>
                         <th>Id</th>
                         <th>Name</th>
@@ -57,8 +98,8 @@
                             <th><c:out value="${user.age}"/></th>
                             <th><c:out value="${user.isAdmin}"/></th>
                             <th><c:out value="${user.createdDate}"/></th>
-                            <th><a href="editUser?id=<c:out value='${user.id}'/>">Edit</a></th>
-                            <th><a href="deleteUser?id=<c:out value='${user.id}'/>">Delete</a></th>
+                            <th><a class="aEdit" href="editUser?id=<c:out value='${user.id}'/>">Edit</a></th>
+                            <th><a class="aDelete"href="deleteUser?id=<c:out value='${user.id}'/>">Delete</a></th>
                         </tr>
                     </c:forEach>
                     </tbody>
