@@ -106,6 +106,7 @@
                 </table>
             </c:if>
         </div>
+        <div class="panel-footer" style="background-color:#786455">dd</div>
     </div>
 
     <div id="pagination">
