@@ -33,14 +33,14 @@
             padding: 2px 2px;
             width: 5em;
             height: 2em;
-            background-color: #333;
+            background-color: #4d3a1e;
             color: #f1f1f1;
             border-radius: 0;
             transition: .2s;
         }
 
         .btn:hover, .btn:focus {
-            border: 1px solid #333;
+            border: 1px solid #4d3a1e;
             background-color: #fff;
             color: #000;
         }

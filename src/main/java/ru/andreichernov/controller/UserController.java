@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class UserController {
     private static final Logger logger = Logger.getLogger(UserController.class);
+    private static final int MAX_ROWS_PER_PAGE = 10;
 
     public UserController() {
         System.out.println("UserController()");
@@ -80,7 +81,7 @@ public class UserController {
 
         List<User> users = userService.getAllUsers();
         PagedListHolder<User> pagedListHolder = new PagedListHolder<>(users);
-        pagedListHolder.setPageSize(20);
+        pagedListHolder.setPageSize(MAX_ROWS_PER_PAGE);
         modelAndView.addObject("maxPages", pagedListHolder.getPageCount());
 
         if(page == null || page < 1 || page > pagedListHolder.getPageCount()){

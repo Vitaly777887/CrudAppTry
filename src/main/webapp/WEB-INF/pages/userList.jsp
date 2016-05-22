@@ -18,14 +18,14 @@
             padding: 2px 2px;
             width: 5em;
             height: 2em;
-            background-color: #333;
+            background-color: #4d3a1e;
             color: #f1f1f1;
             border-radius: 0;
             transition: .2s;
         }
 
         .btn:hover, .btn:focus {
-            border: 1px solid #333;
+            border: 1px solid #4d3a1e;
             background-color: #fff;
             color: #000;
         }
@@ -45,15 +45,38 @@
         a.aEdit:active, a.aDelete:active {
             color: #ded728;
         }
-        a.aCreateUser:link{
+
+        a.aCreateUser:link {
             color: #d1cbbc;
         }
-        a.aCreateUser:visited{
+
+        a.aCreateUser:visited {
             color: #c4bba5;
         }
-        a.aCreateUser:hover{
-             color: #a0cc95;
-         }
+
+        a.aCreateUser:hover {
+            color: #a0cc95;
+        }
+
+        .panel-footer a{
+            font-size: 1.2em;
+        }
+        .panel-footer a:link {
+            color: #d1cbbc;
+        }
+
+        .panel-footer a:visited {
+            color: #c4bba5;
+        }
+
+        .panel-footer a:hover {
+            color: #a0cc95;
+        }
+
+        .panel-footer a:active {
+            color: #ded728;
+        }
+
     </style>
 </head>
 <body class=".container-fluid" style="background-color:whitesmoke">
@@ -99,44 +122,41 @@
                             <th><c:out value="${user.isAdmin}"/></th>
                             <th><c:out value="${user.createdDate}"/></th>
                             <th><a class="aEdit" href="editUser?id=<c:out value='${user.id}'/>">Edit</a></th>
-                            <th><a class="aDelete"href="deleteUser?id=<c:out value='${user.id}'/>">Delete</a></th>
+                            <th><a class="aDelete" href="deleteUser?id=<c:out value='${user.id}'/>">Delete</a></th>
                         </tr>
                     </c:forEach>
                     </tbody>
                 </table>
             </c:if>
         </div>
-        <div class="panel-footer" style="background-color:#786455">dd</div>
-    </div>
+        <div align="center" class="panel-footer" style="background-color:#786455" id="pagination">
+            <c:url value="/" var="prev">
+                <c:param name="page" value="${page-1}"/>
+            </c:url>
+            <c:if test="${page > 1}">
+                <a href="<c:out value="${prev}" />" class="pn prev">Prev</a>
+            </c:if>
 
-    <div id="pagination">
-
-        <c:url value="/" var="prev">
-            <c:param name="page" value="${page-1}"/>
-        </c:url>
-        <c:if test="${page > 1}">
-            <a href="<c:out value="${prev}" />" class="pn prev">Prev</a>
-        </c:if>
-
-        <c:forEach begin="1" end="${maxPages}" step="1" varStatus="i">
-            <c:choose>
-                <c:when test="${page == i.index}">
-                    <span>${i.index}</span>
-                </c:when>
-                <c:otherwise>
-                    <c:url value="/" var="url">
-                        <c:param name="page" value="${i.index}"/>
-                    </c:url>
-                    <a href='<c:out value="${url}" />'>${i.index}</a>
-                </c:otherwise>
-            </c:choose>
-        </c:forEach>
-        <c:url value="/" var="next">
-            <c:param name="page" value="${page + 1}"/>
-        </c:url>
-        <c:if test="${page + 1 <= maxPages}">
-            <a href='<c:out value="${next}" />' class="pn next">Next</a>
-        </c:if>
+            <c:forEach begin="1" end="${maxPages}" step="1" varStatus="i">
+                <c:choose>
+                    <c:when test="${page == i.index}">
+                        <span>${i.index}</span>
+                    </c:when>
+                    <c:otherwise>
+                        <c:url value="/" var="url">
+                            <c:param name="page" value="${i.index}"/>
+                        </c:url>
+                        <a href='<c:out value="${url}" />'>${i.index}</a>
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>
+            <c:url value="/" var="next">
+                <c:param name="page" value="${page + 1}"/>
+            </c:url>
+            <c:if test="${page + 1 <= maxPages}">
+                <a href='<c:out value="${next}" />' class="pn next">Next</a>
+            </c:if>
+        </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
