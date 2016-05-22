@@ -4,7 +4,7 @@
 **isAdmin** – в приложении это Boolean переменная.
 Необходимо реализовать стандартное crud приложение, которое отображаем список всех юзеров в базе (с пейджингом). С возможностью их удаления, редактирования, добавления новых. И поиска по уже существующим.
 По какому полю искать – каждый решает для себя сам. Можно ограничиться полем name, можно реализовать фильтр для любого поля. 
-[[https://github.com/andreichernov/CrudAppTry/blob/master/readme_img/db_table_example.png|alt=octocat]]
+[https://github.com/andreichernov/CrudAppTry/blob/master/readme_img/db_table_example.png]
 
 Требуемые технологии: 
 •	Maven (для сборки проекта)
