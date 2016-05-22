@@ -6,7 +6,9 @@
 С возможностью их удаления, редактирования, добавления новых. 
 И поиска по уже существующим.
 По какому полю искать – каждый решает для себя сам. Можно ограничиться полем name, можно реализовать фильтр для любого поля. 
-![Example image](../blob/master/readme_img/db_table_example.png)
+
+![Example image](https://github.com/andreichernov/CrudAppTry/blob/master/readme_img/db_table_example.png)
+
 Технологии: 
 *	Maven (для сборки проекта)
 *	Hibernate (для маппинга сущностей приложения на БД, и работы с БД)
