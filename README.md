@@ -1,7 +1,7 @@
 **CRUD** (create, read, update, delete).
 Стандартное crud приложение, которое отображает список всех юзеров в базе (с пейджингом).  С возможностью их удаления, редактирования, добавления новых.  И поиска по полю name. 
 
-![Example image (https://github.com/andreichernov/CrudAppTry/blob/master/readme_img/db_table_example.png)
+![db format](https://github.com/andreichernov/CrudAppTry/blob/master/readme_img/db_table_example.png)
 
 Технологии: 
 *	Maven (для сборки проекта)
